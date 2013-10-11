@@ -1,4 +1,4 @@
-# client ids for facebook, twitter, github
+# client ids for facebook, twitter
 # restart app if changes done here.
 
 facebook:
@@ -9,6 +9,3 @@ twitter:
   key:  	TSBFjkPRmEmRMnjQKf3w                        # Consumer key
   secret:  	M55sG4PNI0We8LJlcFZCs1dx9DtLYn7XG7c4JpFklik  # Consumer secret
 
-github:
-  key: 79a50493ab87fe15a5d0                          # Client ID
-  secret: f3ae293ebb59c7288589fc8a4ca0c8e41b09ed3c   # Client Secret
