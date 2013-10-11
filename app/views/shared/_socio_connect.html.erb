@@ -1,0 +1,45 @@
+<!--
+ / socio_connect plugin
+ / adding facebook and twitter buttons in login page.
+ / 
+ -->
+<script type="text/javascript">
+$(document).ready(function(){
+
+/* 
+ *  login page
+ */
+<%  twitter_keys_present = !$socio_connect_settings['twitter']['key'].blank? && !$socio_connect_settings['twitter']['secret'].blank? ? true : false
+   
+   facebook_keys_present = !$socio_connect_settings['facebook']['key'].blank? && !$socio_connect_settings['facebook']['secret'].blank? ? true : false
+   
+   github_keys_present = !$socio_connect_settings['github']['key'].blank? && !$socio_connect_settings['github']['secret'].blank? ? true : false
+%>
+var twitter_Btn = '', facebook_Btn = '', github_Btn = '';
+<% if twitter_keys_present %>
+   var twitter_Btn = '<%= link_to image_tag("twitterBtn.jpg", :plugin => "redmine_socio_connect"), "/auth/twitter" %>';
+<% end %>
+<% if facebook_keys_present %>
+   var facebook_Btn = '<%= link_to image_tag("facebookBtn.jpg", :plugin => "redmine_socio_connect"), "/auth/facebook" %>';
+<% end %>
+
+
+<% if twitter_keys_present || facebook_keys_present || github_keys_present %>
+	$('#login-form table tbody tr:first').before('<tr><td colspan=2>'+ twitter_Btn +'&nbsp;&nbsp;&nbsp;&nbsp;'+ facebook_Btn +'&nbsp;&nbsp;&nbsp;&nbsp;'+ github_Btn +'</td></tr>');
+<% end %>
+
+/* 
+ * display current user twitter or facebook photo and authenticate via show at top right.
+ */
+
+ <% if socio_connect_user = SocioConnect.current_user(User.current.id) %>
+	 <% if User.current.id == socio_connect_user.user_id %>
+	 	$("#loggedas").append($('<%= image_tag(socio_connect_user.image, :size => "20x20", :class => "socio_connect_image") %>'));
+		$("#loggedas").append('via <%= socio_connect_user.provider %>');
+	<% end %>
+ <% end %>
+
+
+});
+
+</script>

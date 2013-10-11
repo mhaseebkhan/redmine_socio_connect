@@ -1,0 +1,10 @@
+
+/******** top right user picture **********************/
+
+.socio_connect_image { padding: 2px; padding-right: 4px; vertical-align: top; }
+
+/**********************************************************************/
+/* ICONS
+/**********************************************************************/
+
+#admin-menu a.socio_connect { background-image: url(../images/socio_connect1_icon.png)}
